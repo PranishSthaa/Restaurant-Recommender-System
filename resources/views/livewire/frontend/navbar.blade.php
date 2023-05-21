@@ -1,89 +1,105 @@
-<div class="sticky top-0 z-50">
-
-    <div class="navbar bg-base-100">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </label>
-                <ul tabindex="0"
-                    class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>Item 1</a></li>
-                    <li tabindex="0">
-                        <a class="justify-between">
-                            Parent
-                            <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24">
-                                <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                            </svg>
-                        </a>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
-                </ul>
+<div>
+    <!-- ========== HEADER ========== -->
+    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b text-sm py-2.5 sm:py-4">
+        <nav class="max-w-7xl flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
+            <div class="mr-5 md:mr-8">
+                <a class="flex-none text-xl font-semibold" href="#" aria-label="Brand">Restaurant Recom</a>
             </div>
-            <a class="normal-case text-xl">Restaurant Recommender</a>
-        </div>
-        <div class="navbar-center hidden lg:flex">
-            <div class="form-control">
-                <div class="input-group">
-                    <input type="text" placeholder="Search…" class="input input-bordered" />
-                    <button class="btn btn-square">
-                        <div class="material-symbols-outlined">
-                            search
+
+            <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
+                <div class="hidden sm:block">
+                    <label for="icon" class="sr-only">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+                            <span class="material-symbols-outlined">
+                                search
+                            </span>
                         </div>
-                    </button>
+                        <input type="text" id="icon" name="icon"
+                            class="py-2 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-red-500 focus:ring-red-500"
+                            placeholder="Search">
+                    </div>
+                </div>
+
+                <div class="flex flex-row items-center justify-end gap-2">
+                    @auth
+                        <div class="hs-dropdown relative inline-flex" data-hs-dropdown-placement="bottom-right">
+                            <button id="hs-dropdown-with-header" type="button"
+                                class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 text-xs">
+                                <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white"
+                                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                                    alt="Image Description">
+                            </button>
+
+                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] z-10 bg-white shadow-md rounded-lg p-2"
+                                aria-labelledby="hs-dropdown-with-header">
+                                <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg">
+                                    <p class="text-sm text-gray-500">Signed in as</p>
+                                    <p class="text-sm font-medium text-gray-800">james@site.com</p>
+                                </div>
+                                <div class="mt-2 py-2 first:pt-0 last:pb-0">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-red-500 hover:text-white focus:ring-2 focus:ring-red-500"
+                                        href="#">
+                                        <span class="material-symbols-outlined">
+                                            comment
+                                        </span>
+                                        My Reviews
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-red-500 hover:text-white focus:ring-2 focus:ring-red-500"
+                                        href="#">
+                                        <span class="material-symbols-outlined">
+                                            logout
+                                        </span>
+                                        Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}">
+                            <button type="button"
+                                class="py-2 px-2 inline-flex justify-center items-center gap-1 rounded-md border border-transparent font-semibold text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all text-sm">
+                                <span class="material-symbols-outlined">
+                                    login
+                                </span>
+                                Login
+                            </button>
+                        </a>
+                        <a href="{{ route('register') }}">
+                            <button type="button"
+                                class="py-2 px-2 inline-flex justify-center items-center gap-1 rounded-md bg-red-100 border border-transparent font-semibold text-red-500 hover:text-white hover:bg-red-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-red-500 focus:ring-offset-2 transition-all text-sm">
+                                <span class="material-symbols-outlined">
+                                    person_add
+                                </span>
+                                Signup
+                            </button>
+                        </a>
+                    @endauth
+
+
                 </div>
             </div>
-            {{-- <ul class="menu menu-horizontal px-1">
-                <li><a>Item 1</a></li>
-                <li tabindex="0">
-                    <a>
-                        Parent
-                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24">
-                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                        </svg>
-                    </a>
-                    <ul class="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                    </ul>
-                </li>
-                <li><a>Item 3</a></li>
-            </ul> --}}
+        </nav>
+    </header>
+    <!-- Nav -->
+    <nav class="sticky -top-px bg-white text-sm font-medium text-black ring-1 ring-gray-900 ring-opacity-5 border-t shadow-sm shadow-gray-100 pt-6 md:pb-6 -mt-px"
+        aria-label="Jump links">
+        <div
+            class="max-w-7xl snap-x w-full flex items-center overflow-x-auto scrollbar-x px-4 sm:px-6 lg:px-8 pb-4 md:pb-0 mx-auto">
+            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last-pr-0">
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Restaurants</a>
+            </div>
+            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Cuisines</a>
+            </div>
+            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">My Reviews</a>
+            </div>
+            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">About</a>
+            </div>
         </div>
-        <div class="navbar-end">
-            @auth
-                <a href="{{ url('/dashboard') }}" class="btn btn-outline btn-primary btn-sm gap-2">
-                    <span class="material-symbols-outlined">dashboard</span>
-                    Dashboard
-                </a>
-            @else
-                <a href="{{ route('login') }}" class="btn btn-outline btn-primary p-2 gap-2">
-                    <span class="material-symbols-outlined">login</span>
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="btn gap-2 btn-secondary p-2 ml-2">
-                    <span class="material-symbols-outlined">
-                        person_add
-                    </span>
-                    Signup
-                </a>
-            @endauth
-        </div>
-    </div>
-    <div class="p-2 bg-neutral text-center">
-        <a class="hover:text-primary" href="#">Restaurants</a>
-        <a class="hover:text-primary ml-4" href="#">Cuisines</a>
-        <a class="hover:text-primary ml-4" href="#">My Reviews</a>
-        <a class="hover:text-primary ml-4" href="#">About</a>
-    </div>
+    </nav>
+    <!-- End Nav -->
+    <!-- ========== END HEADER ========== -->
 </div>

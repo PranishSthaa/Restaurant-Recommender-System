@@ -3,7 +3,8 @@
     <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b text-sm py-2.5 sm:py-4">
         <nav class="max-w-7xl flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
             <div class="mr-5 md:mr-8">
-                <a class="flex-none text-xl font-semibold" href="{{url('/')}}" aria-label="Brand">Restaurant Recom</a>
+                <a class="flex-none text-xl font-semibold" href="{{ url('/') }}" aria-label="Brand">Restaurant
+                    Recom</a>
             </div>
 
             <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">

@@ -23,6 +23,7 @@
     <livewire:frontend.navbar />
 
     @yield('content')
+    <livewire:frontend.footer />
     @livewireScripts
 </body>
 

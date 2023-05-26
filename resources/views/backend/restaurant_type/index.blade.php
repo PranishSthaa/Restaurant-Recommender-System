@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cuisine') }}
+            {{ __('Restaurant Types') }}
         </h2>
     </x-slot>
 
@@ -24,7 +24,7 @@
             <button
                 class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 bg-opacity-100 hover:bg-indigo-700"
                 data-hs-overlay="#hs-vertically-centered-modal">
-                Add Cuisine
+                Add Restaurant Type
             </button>
 
         </div>
@@ -40,15 +40,15 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-700 text-sm divide-y divide-gray-200 bg-white">
-                    @foreach ($cuisines as $cuisine)
+                    @foreach ($rest_types as $rest_type)
                         <tr class="border-t border-gray-200">
                             <td class="px-6 py-4 whitespace-nowrap">
-                                {{ $cuisine->id }}
+                                {{ $rest_type->id }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $cuisine->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $rest_type->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
-                                <a onclick="return confirm('Delete Cuisine?')"
-                                    href="{{ route('backend.cuisine.destroy', $cuisine->id) }}"
+                                <a onclick="return confirm('Delete Restaurant Type?')"
+                                    href="{{ route('backend.restaurant_type.destroy', $rest_type->id) }}"
                                     class="text-red-600 hover:text-red-900">Delete</a>
                             </td>
                         </tr>
@@ -64,7 +64,7 @@
             <div class="flex flex-col bg-white border shadow-sm rounded-xl">
                 <div class="flex justify-between items-center py-3 px-4 border-b ">
                     <h3 class="font-bold text-gray-800 text-base">
-                        Add Cuisine
+                        Add Restaurant Type
                     </h3>
                     <button type="button"
                         class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm"
@@ -78,10 +78,10 @@
                         </svg>
                     </button>
                 </div>
-                <form action="{{ route('backend.cuisine.save') }}" method="post">
+                <form action="{{ route('backend.restaurant_type.save') }}" method="post">
                     @csrf
                     <div class="p-4 overflow-y-auto">
-                        <x-input-label for="name" :value="__('Cuisine Name')" />
+                        <x-input-label for="name" :value="__('Restaurant Type Name')" />
                         <x-text-input id="name" name="name" type="text" class="mt-1 block w-96" required
                             autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('name')" />

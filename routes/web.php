@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RestTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,5 +32,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dashboard/cuisine', [CuisineController::class, 'index'])->name('backend.cuisine.index');
 Route::get('/dashboard/cuisine/delete/{id}', [CuisineController::class, 'destroy'])->name('backend.cuisine.destroy');
+Route::post('/dashboard/cuisine/save', [CuisineController::class, 'store'])->name('backend.cuisine.save');
 
-require __DIR__.'/auth.php';
+Route::get('/dashboard/restaurant_type', [RestTypeController::class, 'index'])->name('backend.restaurant_type.index');
+Route::get('/dashboard/restaurant_type/delete/{id}', [RestTypeController::class, 'destroy'])->name('backend.restaurant_type.destroy');
+Route::post('/dashboard/restaurant_type/save', [RestTypeController::class, 'store'])->name('backend.restaurant_type.save');
+
+require __DIR__ . '/auth.php';

@@ -16,15 +16,23 @@ class CuisineSeeder extends Seeder
             [
                 'name' => 'Newari'
             ],
+        );
+        DB::table('cuisines')->insert(
             [
                 'name' => 'Nepali'
             ],
+        );
+        DB::table('cuisines')->insert(
             [
                 'name' => 'Tibetan'
             ],
+        );
+        DB::table('cuisines')->insert(
             [
                 'name' => 'Indian'
             ],
+        );
+        DB::table('cuisines')->insert(
             [
                 'name' => 'Continental'
             ],

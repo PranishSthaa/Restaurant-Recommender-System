@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/dashboard/cuisine', [CuisineController::class, 'index'])->name('backend.cuisine.index');
+Route::get('/dashboard/cuisine/delete/{id}', [CuisineController::class, 'destroy'])->name('backend.cuisine.destroy');
 
 require __DIR__.'/auth.php';

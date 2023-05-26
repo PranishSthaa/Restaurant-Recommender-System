@@ -17,15 +17,23 @@ class RestTypeSeeder extends Seeder
             [
                 'name' => 'Cafe',
             ],
+        );
+        DB::table('rest_types')->insert(
             [
                 'name' => 'Fine Dining',
             ],
+        );
+        DB::table('rest_types')->insert(
             [
                 'name' => 'Ethnic',
             ],
+        );
+        DB::table('rest_types')->insert(
             [
                 'name' => 'Bakery',
             ],
+        );
+        DB::table('rest_types')->insert(
             [
                 'name' => 'Fast Food',
             ],

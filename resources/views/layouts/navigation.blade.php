@@ -16,10 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('backend.cuisine.index')" :active="request()->routeIs('backend.cuisine.index')">
-                        {{ __('Cuisine') }}
+                        {{ __('Cuisines') }}
                     </x-nav-link>
                     <x-nav-link :href="route('backend.restaurant_type.index')" :active="request()->routeIs('backend.restaurant_type.index')">
-                        {{ __('Restaurant Type') }}
+                        {{ __('Restaurant Types') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('backend.restaurant.index')" :active="request()->routeIs('backend.restaurant.index')">
+                        {{ __('Restaurants') }}
                     </x-nav-link>
                 </div>
             </div>

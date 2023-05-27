@@ -42,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-700 text-sm divide-y divide-gray-200 bg-white">
-                    @foreach ($restaurants as $restaurant)
+                    {{-- @foreach ($restaurants as $restaurant)
                         <tr class="border-t border-gray-200">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 {{ $restaurant->id }}
@@ -54,7 +54,7 @@
                                     class="text-red-600 hover:text-red-900">Delete</a>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>
@@ -125,7 +125,7 @@
 
                             <div class="col-span-9">
                                 <input id="name" type="text" name="name"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                             <!-- End Col -->
 
@@ -138,7 +138,7 @@
 
                             <div class="col-span-9">
                                 <input id="address" type="text" name="address"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                             <!-- End Col -->
 
@@ -153,7 +153,7 @@
 
                             <div class="col-span-9">
                                 <input id="contact" type="text" name="contact"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                             <!-- End Col -->
 
@@ -170,7 +170,7 @@
                             <div class="col-span-9">
                                 <textarea id="af-submit-application-bio"
                                     class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                    rows="5" placeholder="Write description of the restaurant..."></textarea>
+                                    rows="5" placeholder="Write description of the restaurant..." required></textarea>
                             </div>
                             <!-- End Col -->
 
@@ -189,7 +189,7 @@
                                     class="flex p-3 w-full bg-white border border-gray-200 rounded-md text-sm ">
                                     <input type="checkbox" name="online_order"
                                         class="shrink-0 mt-0.5 border-gray-200 rounded text-indigo-600 pointer-events-none"
-                                        id="online_order">
+                                        id="online_order" required>
                                     <span class="inline-block text-sm font-medium text-gray-500 ml-3">Online
                                         Order?</span>
                                 </label>
@@ -217,7 +217,7 @@
 
                             <div class="col-span-9">
                                 <select id="rest_type" name="rest_type"
-                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500" required>
                                     <option selected>Select Restaurant Type</option>
                                     @foreach ($rest_types as $rest_type)
                                         <option value="{{$rest_type->id}}" >{{$rest_type->name}}</option>
@@ -235,7 +235,7 @@
 
                             <div class="col-span-9">
                                 <select id="cuisine" name="cuisine"
-                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500" required>
                                     <option selected>Select Cuisine</option>
                                     @foreach ($cuisines as $cuisine)
                                         <option value="{{$cuisine->id}}">{{$cuisine->name}}</option>
@@ -255,7 +255,7 @@
 
                             <div class="col-span-9">
                                 <input id="avg_cost_min" type="text" name="avg_cost_min"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                             <!-- End Col -->
 
@@ -270,7 +270,7 @@
 
                             <div class="col-span-9">
                                 <input id="avg_cost_max" type="text" name="avg_cost_max"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                             <!-- End Col -->
 

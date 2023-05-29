@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CuisineController extends Controller
 {
+
+    public function frontendIndex(){
+        $cuisines = Cuisine::all();
+        return view('frontend.cuisine.index', compact('cuisines'));
+    }
+
     public function index(){
         $cuisines = Cuisine::all();
         return view('backend.cuisine.index', compact('cuisines'));

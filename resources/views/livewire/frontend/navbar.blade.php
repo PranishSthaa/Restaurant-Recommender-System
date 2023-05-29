@@ -101,7 +101,11 @@
                 <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Restaurants</a>
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
-                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Cuisines</a>
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500 {{ request()->routeIs('frontend.cuisine.index') ? 'text-red-500 underline underline-offset-1' : '' }}"
+                    href="{{ route('frontend.cuisine.index') }}">Cuisines</a>
+            </div>
+            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Explore</a>
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">About</a>

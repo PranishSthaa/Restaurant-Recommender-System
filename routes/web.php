@@ -21,6 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/cuisine', [CuisineController::class, 'frontendIndex'])->name('frontend.cuisine.index');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

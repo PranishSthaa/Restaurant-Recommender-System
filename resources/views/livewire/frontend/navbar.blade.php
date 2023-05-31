@@ -97,8 +97,9 @@
         aria-label="Jump links">
         <div
             class="max-w-7xl snap-x w-full flex items-center overflow-x-auto scrollbar-x px-4 sm:px-6 lg:px-8 pb-4 md:pb-0 mx-auto">
-            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last-pr-0">
-                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Restaurants</a>
+            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
+                <a class="inline-flex items-center gap-x-2 hover:text-red-500 {{ request()->routeIs('frontend.restaurant.index') ? 'text-red-500 underline underline-offset-1' : '' }}"
+                    href="{{ route('frontend.restaurant.index') }}">Restaurants</a>
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-red-500 {{ request()->routeIs('frontend.cuisine.index') ? 'text-red-500 underline underline-offset-1' : '' }}"

@@ -20,7 +20,7 @@ class Restaurant extends Model
 
     public function restaurant_type(): BelongsTo
     {
-        return $this->belongsTo(RestTypes::class);
+        return $this->belongsTo(RestTypes::class, 'rest_type_id');
     }
 
     public function reviews(): HasMany

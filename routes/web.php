@@ -21,7 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cuisine', [CuisineController::class, 'frontendIndex'])->name('frontend.cuisine.index');
+Route::get('/cuisines', [CuisineController::class, 'frontendIndex'])->name('frontend.cuisine.index');
+Route::get('/restaurants', function () {
+    return view('frontend.restaurant.index');
+})->name('frontend.restaurant.index');
+Route::get('/restaurant/details/{id}', [RestaurantController::class, 'details'])->name('frontend.restaurant.details');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

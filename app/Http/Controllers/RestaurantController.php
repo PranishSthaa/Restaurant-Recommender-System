@@ -18,6 +18,12 @@ class RestaurantController extends Controller
         return view('backend.restaurant.index', compact('restaurants', 'rest_types', 'cuisines'));
     }
 
+    public function details($id){
+        $restaurant = Restaurant::with('cuisine', 'restaurant_type')->find($id);
+        // dd($restaurant);
+        return view('frontend.restaurant.detail', compact('restaurant'));
+    }
+
     public function store(Request $request)
     {
     }

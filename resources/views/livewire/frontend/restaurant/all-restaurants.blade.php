@@ -1,5 +1,8 @@
 <section>
     <div class="border-b border-red-500 py-4 bg-white">
+        <div class="max-w-2xl mx-auto text-center my-4">
+            <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Restaurants</h2>
+        </div>
         <div class="container mx-auto">
             <div class="flex items-center justify-center">
                 <div class="text-black font-semibold mr-4">Sort By:</div>

@@ -33,28 +33,33 @@
             <table class="w-full table-auto divide-y divide-gray-200 mt-2 rounded-md">
                 <thead class="bg-gray-50 text-gray-500 uppercase tracking-wider text-xs">
                     <tr>
-                        <th class="px-6 py-3 text-left">Image</th>
                         <th class="px-6 py-3 text-left">Name</th>
                         <th class="px-6 py-3 text-left">Address</th>
+                        <th class="px-6 py-3 text-left">Contact</th>
                         <th class="px-6 py-3 text-left">Rating</th>
                         <th class="px-6 py-3">
                         </th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-700 text-sm divide-y divide-gray-200 bg-white">
-                    {{-- @foreach ($restaurants as $restaurant)
+                    @foreach ($restaurants as $restaurant)
                         <tr class="border-t border-gray-200">
                             <td class="px-6 py-4 whitespace-nowrap">
-                                {{ $restaurant->id }}
+                                {{ $restaurant->name }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $restaurant->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $restaurant->address }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $restaurant->contact }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $restaurant->totalRating }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
                                 <a onclick="return confirm('Delete restaurant?')"
                                     href="{{ route('backend.restaurant.destroy', $restaurant->id) }}"
                                     class="text-red-600 hover:text-red-900">Delete</a>
                             </td>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
+                    <div class="mt-2">
+                        {{ $restaurants->links() }}
+                    </div>
                 </tbody>
             </table>
         </div>
@@ -125,7 +130,8 @@
 
                             <div class="col-span-9">
                                 <input id="name" type="text" name="name"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500" required>
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
+                                    required>
                             </div>
                             <!-- End Col -->
 
@@ -138,7 +144,8 @@
 
                             <div class="col-span-9">
                                 <input id="address" type="text" name="address"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500" required>
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
+                                    required>
                             </div>
                             <!-- End Col -->
 
@@ -153,7 +160,8 @@
 
                             <div class="col-span-9">
                                 <input id="contact" type="text" name="contact"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    required>
                             </div>
                             <!-- End Col -->
 
@@ -217,10 +225,11 @@
 
                             <div class="col-span-9">
                                 <select id="rest_type" name="rest_type"
-                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500" required>
+                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
+                                    required>
                                     <option selected>Select Restaurant Type</option>
                                     @foreach ($rest_types as $rest_type)
-                                        <option value="{{$rest_type->id}}" >{{$rest_type->name}}</option>
+                                        <option value="{{ $rest_type->id }}">{{ $rest_type->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -235,10 +244,11 @@
 
                             <div class="col-span-9">
                                 <select id="cuisine" name="cuisine"
-                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500" required>
+                                    class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500"
+                                    required>
                                     <option selected>Select Cuisine</option>
                                     @foreach ($cuisines as $cuisine)
-                                        <option value="{{$cuisine->id}}">{{$cuisine->name}}</option>
+                                        <option value="{{ $cuisine->id }}">{{ $cuisine->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -255,7 +265,8 @@
 
                             <div class="col-span-9">
                                 <input id="avg_cost_min" type="text" name="avg_cost_min"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    required>
                             </div>
                             <!-- End Col -->
 
@@ -270,7 +281,8 @@
 
                             <div class="col-span-9">
                                 <input id="avg_cost_max" type="text" name="avg_cost_max"
-                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                                    class="py-2 px-3 pr-11 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    required>
                             </div>
                             <!-- End Col -->
 

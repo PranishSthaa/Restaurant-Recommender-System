@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Cuisine;
 use App\Models\Restaurant;
 use App\Models\RestTypes;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
     public function index()
     {
+        $totalRatings = [];
         $cuisines = Cuisine::all();
         $rest_types = RestTypes::all();
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::paginate(10);
+
+        foreach($restaurants as $restaurant){
+            $totalRating = Review::where('restaurant_id', $restaurant->id)->sum('rating');
+            $restaurant->totalRating = $totalRating;
+        }
 
         return view('backend.restaurant.index', compact('restaurants', 'rest_types', 'cuisines'));
     }

@@ -88,6 +88,39 @@
     </section>
     <section>
         <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+            <h2 class="text-xl font-bold sm:text-2xl">Write a Review</h2>
+
+            <form class="mt-8">
+                <div class="mb-4">
+                    <label for="title" class="block font-medium text-gray-700">Title</label>
+                    <input id="title" type="text" placeholder="Enter title"
+                        class="mt-1 py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-red-500 focus:ring-red-500">
+                </div>
+
+                <div class="mb-4">
+                    <label for="rating" class="block font-medium text-gray-700">Rating</label>
+                    <select id="rating" class="mt-1 px-4 py-2 border border-gray-300 rounded-md w-full">
+                        <option value="5">5 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="2">2 stars</option>
+                        <option value="1">1 star</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="review" class="block font-medium text-gray-700">Review</label>
+                    <textarea id="review" rows="4" placeholder="Write your review"
+                        class="mt-1 px-4 py-2 border border-gray-300 rounded-md w-full"></textarea>
+                </div>
+
+                <button type="submit" class="px-4 py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600">Submit
+                    Review</button>
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
             <h2 class="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
 
             <div class="mt-4 flex items-center gap-4">
@@ -345,7 +378,7 @@
                             <div class="flex justify-end">
                                 <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
                                     <button type="button"
-                                        class="py-3 px-4 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
+                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
                                         View Details
                                     </button>
                                 </a>
@@ -378,7 +411,7 @@
                             <div class="flex justify-end">
                                 <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
                                     <button type="button"
-                                        class="py-3 px-4 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
+                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
                                         View Details
                                     </button>
                                 </a>
@@ -411,7 +444,7 @@
                             <div class="flex justify-end">
                                 <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
                                     <button type="button"
-                                        class="py-3 px-4 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
+                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
                                         View Details
                                     </button>
                                 </a>
@@ -444,7 +477,7 @@
                             <div class="flex justify-end">
                                 <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
                                     <button type="button"
-                                        class="py-3 px-4 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
+                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
                                         View Details
                                     </button>
                                 </a>

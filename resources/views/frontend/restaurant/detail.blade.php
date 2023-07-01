@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="sticky top-0">
-                    @if ($restaurant->online_order)
+                    @if ($selectedRestaurant->online_order)
                         <strong
                             class="rounded-full border border-red-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-red-600">
                             Online Order
@@ -22,63 +22,42 @@
                     <div class="mt-8 flex justify-between">
                         <div class="max-w-[35ch] space-y-2">
                             <h1 class="text-xl font-bold sm:text-2xl">
-                                {{ $restaurant->name }}
+                                {{ $selectedRestaurant->name }}
                             </h1>
 
-                            <p class="text-sm">📍 {{ $restaurant->address }}</p>
+                            <p class="text-sm">📍 {{ $selectedRestaurant->address }}</p>
 
-                            <p class="text-sm">📞 {{ $restaurant->contact }}</p>
+                            <p class="text-sm">📞 {{ $selectedRestaurant->contact }}</p>
 
                             <div class="-ms-0.5 flex">
-                                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-
-                                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-
-                                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-
-                                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-
-                                <svg class="h-5 w-5 text-gray-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
+                                @for ($i = 0; $i < $ratingOutOf5; $i++)
+                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                @endfor
                             </div>
                         </div>
 
-                        <p class="text-lg font-bold">Rs. {{ $restaurant->avg_cost_min }} - {{ $restaurant->avg_cost_max }}
+                        <p class="text-lg font-bold">Rs. {{ $selectedRestaurant->avg_cost_min }} -
+                            {{ $selectedRestaurant->avg_cost_max }}
                         </p>
                     </div>
 
                     <div class="mt-4">
                         <div class="prose max-w-none">
                             <p>
-                                {{ $restaurant->description }}
+                                {{ $selectedRestaurant->description }}
                             </p>
                         </div>
                     </div>
                     <div class="mt-2">
                         <span
-                            class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-500 text-white">{{ $restaurant->cuisine->name }}</span>
+                            class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-500 text-white">{{ $selectedRestaurant->cuisine->name }}</span>
 
                         <span
-                            class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-500 text-white">{{ $restaurant->restaurant_type->name }}</span>
+                            class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-500 text-white">{{ $selectedRestaurant->restaurant_type->name }}</span>
                     </div>
                     <div class="mt-2">
                     </div>
@@ -86,6 +65,7 @@
             </div>
         </div>
     </section>
+    {{-- Review Form --}}
     <section>
         <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
             <h2 class="text-xl font-bold sm:text-2xl">Write a Review</h2>
@@ -114,234 +94,60 @@
                         class="mt-1 px-4 py-2 border border-gray-300 rounded-md w-full"></textarea>
                 </div>
 
-                <button type="submit" class="px-4 py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600">Submit
+                <button type="submit"
+                    class="px-4 py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600">Submit
                     Review</button>
             </form>
         </div>
     </section>
+    {{-- All REVIEWS --}}
     <section>
         <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
             <h2 class="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
 
             <div class="mt-4 flex items-center gap-4">
-                <p class="text-3xl font-medium">
-                    3.8
+                <p class="text-3xl font-medium text-red-500">
+                    {{ $ratingOutOf5 }}/5
                     <span class="sr-only"> Average review score </span>
                 </p>
-
                 <div>
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                    </div>
-
-                    <p class="mt-0.5 text-xs text-gray-500">Based on 48 reviews</p>
+                    <p class="mt-0.5 text-xs text-gray-500">Based on {{ $numberOfReviews }} reviews</p>
                 </div>
             </div>
 
             <div class="mt-8 grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-2">
-                <blockquote>
-                    <header class="sm:flex sm:items-center sm:gap-4">
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                        </div>
+                @foreach ($displayReviews as $displayReview)
+                    <blockquote>
+                        <header class="sm:flex sm:items-center sm:gap-4">
+                            <div class="flex">
+                                {{-- @for ($i = 0; $i < $displayReview->rating; $i++)
+                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                @endfor --}}
+                                <p class="text-3xl font-medium">
+                                    {{ $displayReview->rating }}/5
+                                </p>
+                            </div>
 
-                        <p class="mt-2 font-medium sm:mt-0">The best thing money can buy!</p>
-                    </header>
+                            <p class="mt-2 font-medium sm:mt-0">{{ $displayReview->title }}</p>
+                        </header>
 
-                    <p class="mt-2 text-gray-700">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                        possimus fuga dolor rerum dicta, ipsum laboriosam est totam iusto
-                        alias incidunt cum tempore aliquid aliquam error quisquam ipsam
-                        asperiores! Iste?
-                    </p>
+                        <p class="mt-2 text-gray-700">
+                            {{ $displayReview->comment }}
+                        </p>
 
-                    <footer class="mt-4">
-                        <p class="text-xs text-gray-500">John Doe - 12th January, 2024</p>
-                    </footer>
-                </blockquote>
-
-                <blockquote>
-                    <header class="sm:flex sm:items-center sm:gap-4">
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                        </div>
-
-                        <p class="mt-2 font-medium sm:mt-0">The best thing money can buy!</p>
-                    </header>
-
-                    <p class="mt-2 text-gray-700">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                        possimus fuga dolor rerum dicta, ipsum laboriosam est totam iusto
-                        alias incidunt cum tempore aliquid aliquam error quisquam ipsam
-                        asperiores! Iste?
-                    </p>
-
-                    <footer class="mt-4">
-                        <p class="text-xs text-gray-500">John Doe - 12th January, 2024</p>
-                    </footer>
-                </blockquote>
-
-                <blockquote>
-                    <header class="sm:flex sm:items-center sm:gap-4">
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                        </div>
-
-                        <p class="mt-2 font-medium sm:mt-0">The best thing money can buy!</p>
-                    </header>
-
-                    <p class="mt-2 text-gray-700">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                        possimus fuga dolor rerum dicta, ipsum laboriosam est totam iusto
-                        alias incidunt cum tempore aliquid aliquam error quisquam ipsam
-                        asperiores! Iste?
-                    </p>
-
-                    <footer class="mt-4">
-                        <p class="text-xs text-gray-500">John Doe - 12th January, 2024</p>
-                    </footer>
-                </blockquote>
-
-                <blockquote>
-                    <header class="sm:flex sm:items-center sm:gap-4">
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                        </div>
-
-                        <p class="mt-2 font-medium sm:mt-0">The best thing money can buy!</p>
-                    </header>
-
-                    <p class="mt-2 text-gray-700">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                        possimus fuga dolor rerum dicta, ipsum laboriosam est totam iusto
-                        alias incidunt cum tempore aliquid aliquam error quisquam ipsam
-                        asperiores! Iste?
-                    </p>
-
-                    <footer class="mt-4">
-                        <p class="text-xs text-gray-500">John Doe - 12th January, 2024</p>
-                    </footer>
-                </blockquote>
+                        <footer class="mt-4">
+                            <p class="text-xs text-gray-500">{{ $displayReview->user->name }} -
+                                {{ $displayReview->created_at->format('Y-m-d') }}</p>
+                        </footer>
+                    </blockquote>
+                @endforeach
+                <div class="mt-2">
+                    {{ $displayReviews->links() }}
+                </div>
             </div>
         </div>
     </section>
@@ -354,137 +160,41 @@
             </header>
 
             <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-                <li>
-                    <div class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
-                        <div class="h-52 flex-shrink-0">
-                            <img src="{{ asset('images/hero-bg.jpg') }}" class="rounded-t-xl w-full h-full object-cover"
-                                alt="">
-                        </div>
-                        <div class="flex-grow p-4 md:p-6 flex flex-col justify-between">
-                            <div>
-                                <span class="block mb-1 text-xs font-semibold uppercase text-red-600">
-                                    {{ $restaurant->cuisine->name }} / {{ $restaurant->restaurant_type->name }}
-                                </span>
-                                <h3 class="text-xl font-semibold text-gray-800">
-                                    {{ $restaurant->name }}
-                                </h3>
-                                <p class="mt-3 text-gray-500 flex-grow font-bold">
-                                    Rs. {{ $restaurant->avg_cost_min }} - {{ $restaurant->avg_cost_max }}
-                                </p>
-                                <p class="mt-2 text-gray-500 flex-grow">
-                                    {{ Str::limit($restaurant->description, 100) }}
-                                </p>
+                @foreach ($resultRestaurants as $resultRestaurant)
+                    <li>
+                        <div class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
+                            <div class="h-52 flex-shrink-0">
+                                <img src="{{ asset('images/hero-bg.jpg') }}"
+                                    class="rounded-t-xl w-full h-full object-cover" alt="">
                             </div>
-                            <div class="flex justify-end">
-                                <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
-                                    <button type="button"
-                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
-                                        View Details
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
-                        <div class="h-52 flex-shrink-0">
-                            <img src="{{ asset('images/hero-bg.jpg') }}" class="rounded-t-xl w-full h-full object-cover"
-                                alt="">
-                        </div>
-                        <div class="flex-grow p-4 md:p-6 flex flex-col justify-between">
-                            <div>
-                                <span class="block mb-1 text-xs font-semibold uppercase text-red-600">
-                                    {{ $restaurant->cuisine->name }} / {{ $restaurant->restaurant_type->name }}
-                                </span>
-                                <h3 class="text-xl font-semibold text-gray-800">
-                                    {{ $restaurant->name }}
-                                </h3>
-                                <p class="mt-3 text-gray-500 flex-grow font-bold">
-                                    Rs. {{ $restaurant->avg_cost_min }} - {{ $restaurant->avg_cost_max }}
-                                </p>
-                                <p class="mt-2 text-gray-500 flex-grow">
-                                    {{ Str::limit($restaurant->description, 100) }}
-                                </p>
-                            </div>
-                            <div class="flex justify-end">
-                                <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
-                                    <button type="button"
-                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
-                                        View Details
-                                    </button>
-                                </a>
+                            <div class="flex-grow p-4 md:p-6 flex flex-col justify-between">
+                                <div>
+                                    <span class="block mb-1 text-xs font-semibold uppercase text-red-600">
+                                        {{ $resultRestaurant->cuisine->name }} /
+                                        {{ $resultRestaurant->restaurant_type->name }}
+                                    </span>
+                                    <h3 class="text-xl font-semibold text-gray-800">
+                                        {{ $resultRestaurant->name }}
+                                    </h3>
+                                    <p class="mt-3 text-gray-500 flex-grow font-bold">
+                                        Rs. {{ $resultRestaurant->avg_cost_min }} - {{ $resultRestaurant->avg_cost_max }}
+                                    </p>
+                                    <p class="mt-2 text-gray-500 flex-grow">
+                                        {{ Str::limit($resultRestaurant->description, 100) }}
+                                    </p>
+                                </div>
+                                <div class="flex justify-end">
+                                    <a href="{{ Route('frontend.restaurant.details', $resultRestaurant->id) }}">
+                                        <button type="button"
+                                            class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
+                                            View Details
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
-                        <div class="h-52 flex-shrink-0">
-                            <img src="{{ asset('images/hero-bg.jpg') }}" class="rounded-t-xl w-full h-full object-cover"
-                                alt="">
-                        </div>
-                        <div class="flex-grow p-4 md:p-6 flex flex-col justify-between">
-                            <div>
-                                <span class="block mb-1 text-xs font-semibold uppercase text-red-600">
-                                    {{ $restaurant->cuisine->name }} / {{ $restaurant->restaurant_type->name }}
-                                </span>
-                                <h3 class="text-xl font-semibold text-gray-800">
-                                    {{ $restaurant->name }}
-                                </h3>
-                                <p class="mt-3 text-gray-500 flex-grow font-bold">
-                                    Rs. {{ $restaurant->avg_cost_min }} - {{ $restaurant->avg_cost_max }}
-                                </p>
-                                <p class="mt-2 text-gray-500 flex-grow">
-                                    {{ Str::limit($restaurant->description, 100) }}
-                                </p>
-                            </div>
-                            <div class="flex justify-end">
-                                <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
-                                    <button type="button"
-                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
-                                        View Details
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-xl">
-                        <div class="h-52 flex-shrink-0">
-                            <img src="{{ asset('images/hero-bg.jpg') }}" class="rounded-t-xl w-full h-full object-cover"
-                                alt="">
-                        </div>
-                        <div class="flex-grow p-4 md:p-6 flex flex-col justify-between">
-                            <div>
-                                <span class="block mb-1 text-xs font-semibold uppercase text-red-600">
-                                    {{ $restaurant->cuisine->name }} / {{ $restaurant->restaurant_type->name }}
-                                </span>
-                                <h3 class="text-xl font-semibold text-gray-800">
-                                    {{ $restaurant->name }}
-                                </h3>
-                                <p class="mt-3 text-gray-500 flex-grow font-bold">
-                                    Rs. {{ $restaurant->avg_cost_min }} - {{ $restaurant->avg_cost_max }}
-                                </p>
-                                <p class="mt-2 text-gray-500 flex-grow">
-                                    {{ Str::limit($restaurant->description, 100) }}
-                                </p>
-                            </div>
-                            <div class="flex justify-end">
-                                <a href="{{ Route('frontend.restaurant.details', $restaurant->id) }}">
-                                    <button type="button"
-                                        class="py-2 px-2 justify-center items-center gap-2 rounded-md border-2 border-red-200 font-semibold text-red-500 hover:text-white hover:bg-red-500 hover:border-red-500 transition-all text-sm">
-                                        View Details
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </section>

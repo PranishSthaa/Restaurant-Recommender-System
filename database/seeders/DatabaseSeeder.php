@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\ReviewSeeder;
 use Database\Seeders\CuisineSeeder;
 use Database\Seeders\RestTypeSeeder;
 use Database\Seeders\RestaurantSeeder;
@@ -20,9 +22,13 @@ class DatabaseSeeder extends Seeder
             RestTypeSeeder::class,
             CuisineSeeder::class,
             UserSeeder::class,
-            RestaurantSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
+        $this->call([
+            RestaurantSeeder::class,
+            ReviewSeeder::class,
+        ]);
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

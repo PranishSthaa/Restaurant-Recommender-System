@@ -51,9 +51,11 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $restaurant->contact }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $restaurant->totalRating }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <a href="{{ route('backend.restaurant.show', $restaurant->id) }}"
+                                    class="text-blue-600 hover:text-blue-900">View</a>
                                 <a onclick="return confirm('Delete restaurant?')"
                                     href="{{ route('backend.restaurant.destroy', $restaurant->id) }}"
-                                    class="text-red-600 hover:text-red-900">Delete</a>
+                                    class="text-red-600 hover:text-red-900 ml-2">Delete</a>
                             </td>
                         </tr>
                     @endforeach

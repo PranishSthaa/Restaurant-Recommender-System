@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\RestTypeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,12 @@ Route::get('/dashboard/restaurant_type/delete/{id}', [RestTypeController::class,
 Route::post('/dashboard/restaurant_type/save', [RestTypeController::class, 'store'])->name('backend.restaurant_type.save');
 
 Route::get('/dashboard/restaurant', [RestaurantController::class, 'index'])->name('backend.restaurant.index');
+Route::get('/dashboard/restaurant/detail/{id}', [RestaurantController::class, 'show'])->name('backend.restaurant.show');
 Route::get('/dashboard/restaurant/delete/{id}', [RestaurantController::class, 'destroy'])->name('backend.restaurant.destroy');
 Route::post('/dashboard/restaurant/save', [RestaurantController::class, 'store'])->name('backend.restaurant.save');
+
+Route::get('/dashboard/review', [ReviewController::class, 'index'])->name('backend.review.index');
+// Route::get('/dashboard/review/delete/{id}', [ReviewController::class, 'destroy'])->name('backend.review.destroy');
+// Route::post('/dashboard/review/save', [ReviewController::class, 'store'])->name('backend.review.save');
 
 require __DIR__ . '/auth.php';

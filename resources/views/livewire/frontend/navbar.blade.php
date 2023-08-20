@@ -16,9 +16,18 @@
                                 search
                             </span>
                         </div>
-                        <input type="text" id="icon" name="icon"
+                        <input type="text" id="icon" name="icon" wire:model="search"
                             class="py-2 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-red-500 focus:ring-red-500"
                             placeholder="Search">
+                        <!-- Dropdown box -->
+                        @if (!empty($searchResults) && $search !== '')
+                            <div class="absolute z-20 mt-1 bg-white shadow-md border border-gray-200 rounded-md w-full">
+                                @foreach ($searchResults as $result)
+                                    <a href="{{ Route('frontend.restaurant.details', $result->id) }}"
+                                        class="block py-2 px-4 hover:bg-gray-100">{{ $result->name }}</a>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -40,20 +49,6 @@
                                     <p class="text-sm font-medium text-gray-800">{{ auth()->user()->email }}</p>
                                 </div>
                                 <div class="mt-2 py-2 first:pt-0 last:pb-0">
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-red-500 hover:text-white focus:ring-2 focus:ring-red-500"
-                                        href="#">
-                                        <span class="material-symbols-outlined">
-                                            face
-                                        </span>
-                                        View Profile
-                                    </a>
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-red-500 hover:text-white focus:ring-2 focus:ring-red-500"
-                                        href="#">
-                                        <span class="material-symbols-outlined">
-                                            comment
-                                        </span>
-                                        My Reviews
-                                    </a>
                                     <form action="{{ route('logout') }}" method="post">
                                         @csrf
                                         <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-red-500 hover:text-white focus:ring-2 focus:ring-red-500"
@@ -104,9 +99,6 @@
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-red-500 {{ request()->routeIs('frontend.cuisine.index') ? 'text-red-500 underline underline-offset-1' : '' }}"
                     href="{{ route('frontend.cuisine.index') }}">Cuisines</a>
-            </div>
-            <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
-                <a class="inline-flex items-center gap-x-2 hover:text-red-500" href="#">Explore</a>
             </div>
             <div class="snap-center shrink-0 pr-5 sm:pr-8 sm:last:pr-0">
                 <a class="inline-flex items-center gap-x-2 hover:text-red-500 {{ request()->routeIs('frontend.about.index') ? 'text-red-500 underline underline-offset-1' : '' }}"

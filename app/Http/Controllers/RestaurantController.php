@@ -31,17 +31,11 @@ class RestaurantController extends Controller
         $selectedRestaurants = Restaurant::all();
         $selectedRestaurant = Restaurant::with('cuisine', 'restaurant_type')->find($id);
 
-        $reviews = Review::where('restaurant_id', $id)->get();
-        $displayReviews = Review::where('restaurant_id', $id)->paginate(4);
-        $rating = $reviews->sum('rating');
-        $numberOfReviews = $reviews->count();
-        $ratingOutOf5 = round(($rating / (5 * $numberOfReviews)) * 5);
-
         $restaurantSimilarity = new RestaurantSimilarity($selectedRestaurants);
         $similarityMatrix = $restaurantSimilarity->calculateSimilarityMatrix();
         $resultRestaurants = array_slice($restaurantSimilarity->getRestaurantsSortedBySimularity($id, $similarityMatrix), 0, 5, true);
 
-        return view('frontend.restaurant.detail', compact('selectedRestaurant', 'resultRestaurants', 'ratingOutOf5', 'numberOfReviews', 'displayReviews'));
+        return view('frontend.restaurant.detail', compact('selectedRestaurant', 'resultRestaurants'));
     }
 
     public function show($id)
@@ -52,9 +46,27 @@ class RestaurantController extends Controller
 
     public function store(Request $request)
     {
+        $restaurant = new Restaurant();
+        $restaurant->name = $request->name;
+        $restaurant->description = $request->description;
+        $restaurant->address = $request->address;
+        $restaurant->contact = $request->contact;
+        $restaurant->description = $request->description;
+        $restaurant->online_order = ($request->online_order) ? 1 : 0;
+        $restaurant->avg_cost_min = $request->avg_cost_min;
+        $restaurant->avg_cost_max = $request->avg_cost_max;
+        $restaurant->cuisine_id = $request->cuisine;
+        $restaurant->rest_type_id = $request->rest_type;
+        $restaurant->save();
+
+        return redirect()->route('backend.restaurant.index')->with('message', 'Restaurant Successfully Created.');
     }
 
     public function destroy($id)
     {
+        $restaurant = Restaurant::findOrFail($id);
+        $restaurant->delete();
+
+        return redirect()->route('backend.restaurant.index')->with('message', 'Restaurant Successfully Deleted.');
     }
 }

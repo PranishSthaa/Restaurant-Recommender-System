@@ -87,7 +87,7 @@
                         </svg>
                     </button>
                 </div>
-                <form action="{{ route('backend.cuisine.save') }}" method="post">
+                <form action="{{ route('backend.restaurant.save') }}" method="post">
                     @csrf
                     <div class="p-4 overflow-y-auto">
                         {{-- <x-input-label for="name" :value="__('Restaurant Name')" />
@@ -178,7 +178,7 @@
                             <!-- End Col -->
 
                             <div class="col-span-9">
-                                <textarea id="af-submit-application-bio"
+                                <textarea id="af-submit-application-bio" name="description"
                                     class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     rows="5" placeholder="Write description of the restaurant..." required></textarea>
                             </div>
@@ -199,7 +199,7 @@
                                     class="flex p-3 w-full bg-white border border-gray-200 rounded-md text-sm ">
                                     <input type="checkbox" name="online_order"
                                         class="shrink-0 mt-0.5 border-gray-200 rounded text-indigo-600 pointer-events-none"
-                                        id="online_order" required>
+                                        id="online_order">
                                     <span class="inline-block text-sm font-medium text-gray-500 ml-3">Online
                                         Order?</span>
                                 </label>
@@ -291,7 +291,7 @@
                         </div>
                         <!-- End Section -->
 
-                        <button type="button"
+                        <button type="submit"
                             class="py-3 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-indigo-500 text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-sm">
                             Save
                         </button>
